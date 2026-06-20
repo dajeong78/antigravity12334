@@ -1,0 +1,20 @@
+{
+  "name": "major-recommender",
+  "version": "1.0.0",
+  "description": "대학 전공 추천 및 분석 서비스",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server . -p 3000 -o"
+  },
+  "keywords": [
+    "education",
+    "major",
+    "recommendation",
+    "college"
+  ],
+  "author": "미래설계.AI",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
