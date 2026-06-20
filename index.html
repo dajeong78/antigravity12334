@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미래설계 | 대학 전공 추천 및 분석 서비스</title>
+  <meta name="description" content="사용자의 관심 분야, 선호 과목, 성향 검사 결과를 종합하여 가장 적합한 대학 전공을 추천하고 상세 커리큘럼 및 진로 정보를 제공합니다.">
+  <!-- Google Fonts: Inter & Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <div class="app-wrapper">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo">
+        <i class="fa-solid fa-graduation-cap logo-icon"></i>
+        <span class="logo-text">미래설계<span>.AI</span></span>
+      </div>
+      <div class="header-tag">대학 전공 매칭 플랫폼</div>
+    </header>
+
+    <!-- Main Container -->
+    <main id="app-container">
+      
+      <!-- SCREEN 1: HOME (INTRO) -->
+      <section id="screen-home" class="app-screen active">
+        <div class="intro-content">
+          <span class="badge"><i class="fa-solid fa-sparkles"></i> AI 기반 전공 탐색</span>
+          <h1 class="main-title">나의 잠재력을 깨우는<br><span class="gradient-text">최적의 대학 전공</span>을 찾아서</h1>
+          <p class="sub-title">관심 분야, 즐겨 공부하는 과목, 그리고 행동 성향 분석을 통해 당신의 미래를 그려줄 가장 알맞은 전공을 디자인해 드립니다.</p>
+          
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feat-icon"><i class="fa-solid fa-sliders"></i></div>
+              <h3>정보 매칭</h3>
+              <p>관심 계열과 선호 과목을 반영한 맞춤 설계</p>
+            </div>
+            <div class="feature-card">
+              <div class="feat-icon"><i class="fa-solid fa-clipboard-question"></i></div>
+              <h3>성향 테스트</h3>
+              <p>10가지 문항을 통한 정밀 심리 및 적성 측정</p>
+            </div>
+            <div class="feature-card">
+              <div class="feat-icon"><i class="fa-solid fa-chart-pie"></i></div>
+              <h3>다차원 분석</h3>
+              <p>추천 이유, 전공 특징, 교과목 및 관련 직업 제공</p>
+            </div>
+          </div>
+
+          <button id="btn-start" class="btn btn-primary btn-large">
+            <span>추천 시작하기</span> <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: USER INFO INPUT -->
+      <section id="screen-info" class="app-screen">
+        <div class="card glass">
+          <div class="card-header">
+            <h2><i class="fa-solid fa-user-pen"></i> 기본 정보 입력</h2>
+            <p>맞춤형 분석을 위해 고등학교 생활과 관심사를 공유해 주세요.</p>
+          </div>
+
+          <form id="info-form" onsubmit="return false;">
+            <!-- Name Input -->
+            <div class="form-group">
+              <label for="input-name">당신의 이름 또는 닉네임은 무엇인가요?</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-user input-icon"></i>
+                <input type="text" id="input-name" placeholder="이름을 입력하세요 (예: 홍길동)" required autocomplete="off">
+              </div>
+            </div>
+
+            <!-- Interest Area -->
+            <div class="form-group">
+              <label>관심 있는 대학 학문 계열을 선택해 주세요 (1개 선택)</label>
+              <div class="radio-grid">
+                <label class="radio-card">
+                  <input type="radio" name="interest" value="humanities" required>
+                  <span class="radio-content">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span class="title">인문 계열</span>
+                    <span class="desc">문학, 언어, 역사, 철학</span>
+                  </span>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="interest" value="social">
+                  <span class="radio-content">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="title">사회 계열</span>
+                    <span class="desc">경영, 경제, 심리, 언론, 정치</span>
+                  </span>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="interest" value="engineering">
+                  <span class="radio-content">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <span class="title">공학 계열</span>
+                    <span class="desc">컴퓨터, 반도체, 기계, 화학공학</span>
+                  </span>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="interest" value="science">
+                  <span class="radio-content">
+                    <i class="fa-solid fa-atom"></i>
+                    <span class="title">자연과학 계열</span>
+                    <span class="desc">수학, 물리학, 화학, 생명과학</span>
+                  </span>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="interest" value="arts">
+                  <span class="radio-content">
+                    <i class="fa-solid fa-palette"></i>
+                    <span class="title">예체능 계열</span>
+                    <span class="desc">디자인, 음악, 체육, 연극영화</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Preferred Subjects -->
+            <div class="form-group">
+              <label>평소 선호하거나 공부하기 즐거운 과목을 선택해 주세요 (중복 선택 가능)</label>
+              <div class="checkbox-grid">
+                <label class="checkbox-card">
+                  <input type="checkbox" name="subject" value="국어">
+                  <span class="checkbox-content">국어</span>
+                </label>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="subject" value="영어">
+                  <span class="checkbox-content">영어</span>
+                </label>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="subject" value="수학">
+                  <span class="checkbox-content">수학</span>
+                </label>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="subject" value="사회">
+                  <span class="checkbox-content">사회/역사</span>
+                </label>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="subject" value="과학">
+                  <span class="checkbox-content">과학</span>
+                </label>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="subject" value="음악">
+                  <span class="checkbox-content">음악</span>
+                </label>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="subject" value="체육">
+                  <span class="checkbox-content">체육</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Validation warning container -->
+            <div id="info-error-msg" class="error-msg hide">
+              <i class="fa-solid fa-triangle-exclamation"></i> 모든 필수 항목을 입력하거나 선택해 주세요.
+            </div>
+
+            <div class="form-actions">
+              <button type="button" id="btn-info-back" class="btn btn-secondary"><i class="fa-solid fa-arrow-left-long"></i> 이전으로</button>
+              <button type="button" id="btn-info-next" class="btn btn-primary">다음 단계 (성향 검사) <i class="fa-solid fa-arrow-right-long"></i></button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: PERSONALITY TEST -->
+      <section id="screen-test" class="app-screen">
+        <div class="card glass">
+          <!-- Progress bar -->
+          <div class="progress-container">
+            <div class="progress-text">
+              <span>성향 및 적성 진단 테스트</span>
+              <span id="test-progress-num">Q. 1 / 10</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div id="test-progress-fill" class="progress-bar-fill" style="width: 10%;"></div>
+            </div>
+          </div>
+
+          <!-- Question container -->
+          <div class="question-box">
+            <h2 id="question-title" class="question-title">로딩 중...</h2>
+            <div id="options-container" class="options-container">
+              <!-- Options loaded dynamically -->
+            </div>
+          </div>
+
+          <div class="form-actions test-actions">
+            <button type="button" id="btn-test-back" class="btn btn-secondary"><i class="fa-solid fa-arrow-left-long"></i> 이전 질문</button>
+            <span class="test-tip"><i class="fa-solid fa-lightbulb"></i> 자신의 생각에 가장 가까운 답변을 골라주세요.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 4: RECOMMENDATION RESULTS -->
+      <section id="screen-results" class="app-screen">
+        <div class="result-layout">
+          <!-- Left side: primary match -->
+          <div class="result-primary card glass">
+            <div class="card-header text-center">
+              <div class="result-badge"><i class="fa-solid fa-trophy"></i> Best Match</div>
+              <p><span id="result-user-name">홍길동</span>님에게 추천하는 최적의 학과는</p>
+              <h1 id="result-major-name" class="gradient-text">컴퓨터공학과</h1>
+              <p class="category-tag"><i class="fa-solid fa-tag"></i> <span id="result-major-category">공학 계열</span></p>
+            </div>
+
+            <div class="result-reason-box">
+              <h3><i class="fa-solid fa-comment-dots"></i> 추천 이유</h3>
+              <p id="result-recommended-reason">로딩 중...</p>
+            </div>
+
+            <div class="result-quick-detail">
+              <div class="quick-info-item">
+                <span class="label">대표 관련 직업</span>
+                <span id="result-quick-jobs" class="val">소프트웨어 개발자, 시스템 엔지니어 등</span>
+              </div>
+              <div class="quick-info-item">
+                <span class="label">고교 추천 과목</span>
+                <span id="result-quick-subjects" class="val">수학, 과학</span>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button id="btn-view-details" class="btn btn-primary btn-large">
+                <i class="fa-solid fa-magnifying-glass-plus"></i> <span>학과 상세 정보 조회하기</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right side: details and alternative matches -->
+          <div class="result-alternatives">
+            <div class="card glass">
+              <h3><i class="fa-solid fa-chart-simple"></i> 성향 매칭 리포트</h3>
+              <!-- Simple chart visualization using pure CSS -->
+              <div class="chart-container">
+                <div class="chart-row">
+                  <span class="chart-label">인문 계열</span>
+                  <div class="chart-bar-wrapper">
+                    <div id="chart-bar-humanities" class="chart-bar bar-humanities" style="width: 50%"></div>
+                  </div>
+                  <span id="chart-val-humanities" class="chart-value">0점</span>
+                </div>
+                <div class="chart-row">
+                  <span class="chart-label">사회 계열</span>
+                  <div class="chart-bar-wrapper">
+                    <div id="chart-bar-social" class="chart-bar bar-social" style="width: 50%"></div>
+                  </div>
+                  <span id="chart-val-social" class="chart-value">0점</span>
+                </div>
+                <div class="chart-row">
+                  <span class="chart-label">공학 계열</span>
+                  <div class="chart-bar-wrapper">
+                    <div id="chart-bar-engineering" class="chart-bar bar-engineering" style="width: 50%"></div>
+                  </div>
+                  <span id="chart-val-engineering" class="chart-value">0점</span>
+                </div>
+                <div class="chart-row">
+                  <span class="chart-label">자연과학</span>
+                  <div class="chart-bar-wrapper">
+                    <div id="chart-bar-science" class="chart-bar bar-science" style="width: 50%"></div>
+                  </div>
+                  <span id="chart-val-science" class="chart-value">0점</span>
+                </div>
+                <div class="chart-row">
+                  <span class="chart-label">예체능</span>
+                  <div class="chart-bar-wrapper">
+                    <div id="chart-bar-arts" class="chart-bar bar-arts" style="width: 50%"></div>
+                  </div>
+                  <span id="chart-val-arts" class="chart-value">0점</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card glass alt-card-container">
+              <h3><i class="fa-solid fa-shuffle"></i> 유사한 추천 전공 (대안)</h3>
+              <p class="alt-desc">점수가 근접했거나 관심사 및 선호 과목에 기반해 추천된 추가 학과입니다. 클릭하면 상세 정보를 확인할 수 있습니다.</p>
+              <div id="alternative-majors-list" class="alt-list">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-footer">
+          <button id="btn-restart" class="btn btn-secondary btn-large"><i class="fa-solid fa-rotate-left"></i> 처음부터 다시 검사하기</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- DETAILED INFO POPUP MODAL -->
+    <div id="major-modal" class="modal-overlay">
+      <div class="modal-content glass">
+        <button id="btn-modal-close" class="modal-close-btn" aria-label="닫기"><i class="fa-solid fa-xmark"></i></button>
+        
+        <div class="modal-header">
+          <span id="modal-category-badge" class="badge">공학 계열</span>
+          <h2 id="modal-title">컴퓨터공학과</h2>
+          <p id="modal-desc" class="lead">컴퓨터 시스템의 하드웨어와 소프트웨어를 조화롭게 개발하고 연구하는 전공입니다.</p>
+        </div>
+
+        <div class="modal-body-grid">
+          <!-- Course Curriculum -->
+          <div class="modal-section card-inner">
+            <h4><i class="fa-solid fa-graduation-cap"></i> 주요 전공 과목 (대학 커리큘럼)</h4>
+            <ul id="modal-curriculum-list" class="styled-list">
+              <li>자료구조</li>
+              <li>알고리즘</li>
+              <li>컴퓨터 구조</li>
+            </ul>
+          </div>
+
+          <!-- Careers -->
+          <div class="modal-section card-inner">
+            <h4><i class="fa-solid fa-briefcase"></i> 졸업 후 주요 진로 및 관련 직업</h4>
+            <div id="modal-jobs-tags" class="tags-container">
+              <span class="tag">소프트웨어 개발자</span>
+              <span class="tag">데이터 분석가</span>
+            </div>
+          </div>
+
+          <!-- Recommend Subjects -->
+          <div class="modal-section card-inner full-width">
+            <h4><i class="fa-solid fa-book-bookmark"></i> 연계성이 높은 고등학교 과목</h4>
+            <div id="modal-subjects-tags" class="tags-container">
+              <span class="tag subject-tag">수학</span>
+              <span class="tag subject-tag">과학</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="btn-modal-back" class="btn btn-primary"><i class="fa-solid fa-arrow-left-long"></i> 추천 결과로 돌아가기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>&copy; 2026 미래설계.AI. All rights reserved. Designed for student future consulting.</p>
+    </footer>
+  </div>
+
+  <!-- App logic entry -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
